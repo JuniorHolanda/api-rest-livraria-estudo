@@ -1,6 +1,6 @@
 import express from 'express';
 import connectDb from './config/db.js';
-import Livro from './models/Livro.js';
+import livroRoutes from './routes/productRoute.js';
 
 const connect = await connectDb();
 
@@ -14,11 +14,12 @@ connect.once('open', () => {
 
 const app = express();
 app.use(express.json());
+app.use(livroRoutes);
 
-app.get('/livros', async (req, res) => {
-  const listaLivros = await Livro.find({});
-  res.status(200).json(listaLivros);
-});
+// app.get('/livros', async (req, res) => {
+//   const listaLivros = await Livro.find({});
+//   res.status(200).json(listaLivros);
+// });
 
 // app.get('/', (req, res) => {
 //   res.status(200).send('esta é a rota raíz.');
