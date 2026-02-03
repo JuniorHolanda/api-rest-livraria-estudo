@@ -1,8 +1,8 @@
-import Livro from "../models/Livro.js";
+import livro from '../models/Livro.js';
 
 export default class LivroController {
-    static async listarlivro(req, res) {
-        const listaLivros = Livro.find({});
-        res.status(200).json(listaLivros);
-    }
+  static async listarLivros(req, res) {
+    const listaLivros = await livro.find({});
+    res.status(200).json(listaLivros);
+  }
 }
